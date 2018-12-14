@@ -15,7 +15,10 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
+  database: db/db_dev_db.sqlite3
+  pool: 5
+  timeout: 5000
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -23,7 +26,7 @@ default: &default
 
 development:
   <<: *default
-  database: aws-beanstalk_development
+  #database: aws-beanstalk_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: aws-beanstalk_test
+  #database: aws-beanstalk_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: aws-beanstalk_production
-  username: aws-beanstalk
-  password: <%= ENV['AWS-BEANSTALK_DATABASE_PASSWORD'] %>
+  #database: aws-beanstalk_production
+  #username: aws-beanstalk
+  #password: <%= ENV['AWS-BEANSTALK_DATABASE_PASSWORD'] %>
